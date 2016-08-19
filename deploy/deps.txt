@@ -1,3 +1,4 @@
 toml==0.9.1
 sentry==8.4.0
 django-smtp-ssl==1.0
+Jinja2==2.8
