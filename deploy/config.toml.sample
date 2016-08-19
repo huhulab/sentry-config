@@ -1,6 +1,6 @@
 # 全局配置
 [global]
-root = "/Users/zk/work/huhulab/sentry-config/"
+root = "/opt/services/sentry-config/"
 project-name = "sentry"
 
 # 默认参数
@@ -13,7 +13,7 @@ log_dir = "/mnt/repos/sentry.logs"
 # Supervisor
 numprocs = 1
 stopsignal = "TERM"
-env = '''SENTRY_CONF="/opt/services/sentry"'''
+env = '''SENTRY_CONF="/opt/services/sentry-config"'''
 
 # Cache config
 cache_redis_host = "127.0.0.1"
@@ -30,19 +30,19 @@ cache_redis_db = 10
 
 [files."deploy/supervisor/programs/sentry_web.conf"]
     program = "sentry_web"
-    directory = "/opt/services/sentry"
+    directory = "/opt/services/sentry-config"
     command = "sentry start"
     logfile = "/mnt/repos/sentry/logs/supervisor-sentry-web.log"
 
 [files."deploy/supervisor/programs/sentry_worker.conf"]
     program = "sentry_worker"
-    directory = "/opt/services/sentry"
+    directory = "/opt/services/sentry-config"
     command = "sentry run worker"
     logfile = "/mnt/repos/sentry/logs/supervisor-sentry-worker.log"
 
 [files."deploy/supervisor/programs/sentry_cron.conf"]
     program = "sentry_cron"
-    directory = "/opt/services/sentry"
+    directory = "/opt/services/sentry-config"
     command = "sentry run cron"
     logfile = "/mnt/repos/sentry/logs/supervisor-sentry-cron.log"
 
