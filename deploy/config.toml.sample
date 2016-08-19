@@ -8,7 +8,7 @@ project-name = "sentry"
 user = "huhu"
 listen = 80
 debug = true
-log_dir = "/mnt/services/sentry.logs"
+log_dir = "/mnt/services/sentry/logs"
 
 # Supervisor
 numprocs = 1
