@@ -8,7 +8,7 @@ project-name = "sentry"
 user = "huhu"
 listen = 80
 debug = true
-log_dir = "/mnt/repos/sentry.logs"
+log_dir = "/mnt/services/sentry.logs"
 
 # Supervisor
 numprocs = 1
@@ -25,26 +25,26 @@ cache_redis_db = 10
     server_proxy_pass = ""
 
 [files."deploy/supervisor/supervisord.conf"]
-    directory = "/mnt/repos/sentry"
-    log_directory = "/mnt/repos/sentry"
+    directory = "/mnt/services/sentry"
+    log_directory = "/mnt/services/sentry"
 
 [files."deploy/supervisor/programs/sentry_web.conf"]
     program = "sentry_web"
     directory = "/opt/services/sentry-config"
     command = "sentry start"
-    logfile = "/mnt/repos/sentry/logs/supervisor-sentry-web.log"
+    logfile = "/mnt/services/sentry/logs/supervisor-sentry-web.log"
 
 [files."deploy/supervisor/programs/sentry_worker.conf"]
     program = "sentry_worker"
     directory = "/opt/services/sentry-config"
-    command = "sentry run worker"
-    logfile = "/mnt/repos/sentry/logs/supervisor-sentry-worker.log"
+    command = "sentry celery worker"
+    logfile = "/mnt/services/sentry/logs/supervisor-sentry-worker.log"
 
 [files."deploy/supervisor/programs/sentry_cron.conf"]
     program = "sentry_cron"
     directory = "/opt/services/sentry-config"
-    command = "sentry run cron"
-    logfile = "/mnt/repos/sentry/logs/supervisor-sentry-cron.log"
+    command = "sentry celery beat"
+    logfile = "/mnt/services/sentry/logs/supervisor-sentry-cron.log"
 
 [files."config.yml"]
     mail_backend = "django_smtp_ssl.SSLEmailBackend"
