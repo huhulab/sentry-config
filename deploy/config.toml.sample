@@ -26,7 +26,7 @@ name = 'sentry-cleanup'
 is-abspath = true
 enable = true
 restriction = "@monthly"
-command = "sentry cleanup --days=30"
+command = "SENTRY_CONF=/opt/services/sentry sentry cleanup --days=30"
 
 [files."deploy/nginx/sentry.conf"]
     server_name = "sentry.huhulab.com"
